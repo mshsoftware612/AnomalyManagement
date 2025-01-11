@@ -1,0 +1,220 @@
+<%- include('./partials/header.ejs') %>
+<link rel="stylesheet" href="/css/editForm.css">
+
+<div class="main-Container">
+    
+<form method="post" action="/update/<%= Records.ID %>" class="edit-form">
+    <h2>Edit Anomaly Records</h2>
+
+    <label for="id">ID</label>
+    <input type="text" id="id" name="id" placeholder="Enter Id" value="<%= Records.ID %>" readonly>
+
+    
+    <div class="col-md-12">
+        <label for="status" class="form-label field-label">Status</label>
+        <select class="form-select"  id="status" name="StatusName">
+            <option value="" <%= !Records.ANOMALY_STATUS ? 'selected' : '' %>>Select Status</option>
+            <option value="Open" <%= Records.ANOMALY_STATUS === 'Open' ? 'selected' : '' %>>Open</option>
+            <option value="Closed" <%= Records.ANOMALY_STATUS === 'Closed' ? 'selected' : '' %>>Closed</option>
+        </select>
+    </div>
+
+    <div class="col-md-12">
+        <label for="integrityThreat" class="form-label field-label">Integrity Threat</label>
+        <select class="form-select"  id="integrityThreat" name="IntegrityName">
+            <option value="" <%= !Records.INTEGRITY_THREAT ? 'selected' : '' %>>Select Threat Level</option>
+            <option value="Low" <%= Records.INTEGRITY_THREAT === 'Low' ? 'selected' : '' %>>Low</option>
+            <option value="Medium" <%= Records.INTEGRITY_THREAT === 'Medium' ? 'selected' : '' %>>Medium</option>
+            <option value="High" <%= Records.INTEGRITY_THREAT === 'High' ? 'selected' : '' %>>High</option>
+        </select>
+    </div>
+
+    <div class="col-md-12">
+        <label for="productionThreat" class="form-label field-label">Production Threat</label>
+        <select class="form-select" id="productionThreat" name="ProductionName" >
+            <option value="" <%= !Records.PRODUCTION_THREAT ? 'selected' : '' %>>Select Threat Level</option>
+            <option value="Low" <%= Records.PRODUCTION_THREAT === 'Low' ? 'selected' : '' %>>Low</option>
+            <option value="Medium" <%= Records.PRODUCTION_THREAT === 'Medium' ? 'selected' : '' %>>Medium</option>
+            <option value="High" <%= Records.PRODUCTION_THREAT === 'High' ? 'selected' : '' %>>High</option>
+        </select>
+    </div>
+   
+    <label for="Custodian">Custodian</label>
+    <input type="text" id="custodian" name="CustodianName" placeholder="Enter Custodian" value="<%= Records.CUSTODIAN %>">
+
+    <label for="Operator">Operator</label>
+    <input type="text" id="operator" name="OperatorName" placeholder="Enter Operator" value="<%= Records.OPERATOR %>">
+
+    <label for="Area">Area</label>
+    <input type="text" id="area" name="AreaName" placeholder="Enter Area" value="<%= Records.AREA %>">
+
+    <label for="PLNo">PL No</label>
+    <input type="text" id="PLNo" name="PLName" placeholder="Enter PL No" value="<%= Records.PL_NO %>">
+
+    <label for="Platform">Platform</label>
+    <input type="text" id="platform" name="PlatformName" placeholder="Enter Platform" value="<%= Records.PLATFORM %>">
+
+    <label for="Field">Field</label>
+    <input type="text" id="field" name="FieldName" placeholder="Enter Field" value="<%= Records.FIELD %>">
+
+    <div class="col-md-12">
+        <label for="isPipeline" class="form-label field-label">Is Pipeline</label>
+        <select class="form-select" id="isPipeline" name="PipelineName" >
+            <option value=""<%= !Records.IS_PIPELINE ? 'selected' : '' %> >Select</option>
+            <option value="Yes" <%= Records.IS_PIPELINE === 'Yes' ? 'selected' : '' %>>Yes</option>
+            <option value="No" <%= Records.IS_PIPELINE === 'No' ? 'selected' : '' %>>No</option>
+        </select>
+    </div>
+   
+    <div class="col-md-12">
+        <label for="isStructure" class="form-label field-label">Is Structure</label>
+        <select class="form-select" id="isStructure" name="StructureName" >
+            <option value=""<%= !Records.IS_STRUCTURE ? 'selected' : '' %> >Select</option>
+            <option value="Yes" <%= Records.IS_STRUCTURE === 'Yes' ? 'selected' : '' %>>Yes</option>
+            <option value="No" <%= Records.IS_STRUCTURE === 'No' ? 'selected' : '' %>>No</option>
+        </select>
+    </div>
+
+   
+    <div class="col-md-12">
+        <label for="isWell" class="form-label field-label">Is Well</label>
+        <select class="form-select" id="isWell" name="IsWellName" >
+            <option value=""<%= !Records.IS_WELL ? 'selected' : '' %> >Select</option>
+            <option value="Yes" <%= Records.IS_WELL === 'Yes' ? 'selected' : '' %>>Yes</option>
+            <option value="No" <%= Records.IS_WELL === 'No' ? 'selected' : '' %>>No</option>
+        </select>
+    </div>
+
+   
+    <label for="AnomalyType">Anomaly Type</label>
+    <input type="text" id="AnomalyType" name="AnomalyTypeName" placeholder="Enter Anomaly Type" value="<%= Records.ANOMALY_TYPE %>">
+
+    <label for="Assessment">Assessment</label>
+    <input type="text" id="assessment" name="AssessmentName" placeholder="Enter Assessment" value="<%= Records.ASSESSMENT %>">
+
+    <label for="Location">Location</label>
+    <input type="text" id="Location" name="LocationName" placeholder="Enter Location" value="<%= Records.LOCATION %>">
+
+    <label for="ComPDes">ComP Des</label>
+    <input type="text" id="comPDes" name="ComPName" placeholder="Enter ComP Des" value="<%= Records.COMP_DES %>">
+
+    <label for="DateFirstReported">Date First Reported</label>
+    <input 
+        type="text" 
+        id="dateFirstReported" 
+        name="ReportedName" 
+        placeholder="Enter Date First Reported" 
+        value="<%= (() => { 
+            const date = new Date(Records.REPORTED_DATE);
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+            const year = date.getFullYear();
+            return `${year}-${month}-${day}`;
+        })() %>">
+    
+    <label for="DateLastInspected">Date Last Inspected</label>
+    <input 
+        type="text" 
+        id="DateLastInspected" 
+        name="InspectedName" 
+        placeholder="Enter Date Last Inspected" 
+        value="<%= (() => { 
+            const date = new Date(Records.INSPECTED_DATE);
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+            const year = date.getFullYear();
+            return `${year}-${month}-${day}`;
+        })() %>">
+    
+
+    <label for="Description">Description</label>
+    <textarea id="description" name="DescriptionName" placeholder="Enter Description" ><%= Records.DESCRIPTION %></textarea>
+    
+    <label for="Components">Components</label>
+    <textarea id="components" name="ComponentsName" placeholder="Enter Components"> <%= Records.COMPONENTS %></textarea>
+
+    <label for="Comments">Comments</label>
+    <textarea id="comments" name="CommentsName" placeholder="Enter Comments" ><%= Records.COMMENTS %></textarea>
+
+    <label for="PreparedBy">Prepared By</label>
+    <input type="text" id="preparedBy" name="PreparedName" placeholder="Enter Prepared By" value="<%= Records.PREPARED_BY %>">
+
+    <label for="Checked By">Checked By</label>
+    <input type="text" id="checkedBy" name="CheckedName" placeholder="Enter Checked By" value="<%= Records.CHECKED_BY %>">
+
+    <label for="ApprovedBy">Approved By</label>
+    <input type="text" id="approvedBy" name="ApprovedName" placeholder="Enter Approved By" value="<%= Records.APPROVE_BY %>">
+
+    <label for="EnteredBy">Entered By</label>
+    <input type="text" id="enteredBy" name="EnteredName" placeholder="Enter Entered By" value="<%= Records.ENTERED_BY %>">
+
+    <label for="Equipment Supplier">Equipment Supplier</label>
+    <input type="text" id="equipmentSupplier" name="EquipmentName" placeholder="Enter Equipment Supplier" value="<%= Records.EQUIPMENT_SUPPLIER %>">
+   
+    <div class="col-md-12">
+        <label for="criticality" class="form-label field-label">Criticality</label>
+        <select class="form-select" id="criticality" name="CriticalityName" >
+            <option value="" <%= !Records.CRITICALITY ? 'selected' : '' %>>Select Criticality</option>
+            <option value="Low" <%= Records.CRITICALITY === 'Low' ? 'selected' : '' %>>Low</option>
+            <option value="Medium" <%= Records.CRITICALITY === 'Medium' ? 'selected' : '' %>>Medium</option>
+            <option value="High" <%= Records.CRITICALITY === 'High' ? 'selected' : '' %>>High</option>
+        </select>
+    </div>
+
+    
+    <label for="Hyperlink">Hyperlink</label>
+    <input type="text" id="hyperlink" name="HyperlinkName" placeholder="Enter Hyperlink" value="<%= Records.HYPERLINK %>">
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <label for="supportDoc1" class="form-label field-label">Support Document 1</label>
+            <input type="file" class="form-control" id="supportDoc1" name="Document1Name">
+            <a 
+            id="docLink1" 
+            href="<%= Records.DOCUMENT_1 ? `/uploads/${Records.DOCUMENT_1}` : '#' %>" 
+            target="_blank" 
+            style="<%= Records.DOCUMENT_1 != null && Records.DOCUMENT_1 !== '' ? 'display: inline;' : 'display: none;' %>">
+            View Uploaded Document
+        </a>
+        </div>
+        <div class="col-md-3">
+            <label for="supportDoc2" class="form-label field-label">Support Document 2</label>
+            <input type="file" class="form-control" id="supportDoc2" name="Document2Name">
+            <a 
+            id="docLink2" 
+            href="<%= Records.DOCUMENT_2 ? `/uploads/${Records.DOCUMENT_2}` : '' %>" 
+            target="_blank" 
+            style="<%= Records.DOCUMENT_2 != null && Records.DOCUMENT_2 !== '' ? 'display: inline;' : 'display: none;' %>"
+            >
+            View Uploaded Document
+        </a>
+        </div>
+        <div class="col-md-3">
+            <label for="supportDoc3" class="form-label field-label">Support Document 3</label>
+            <input type="file" class="form-control" id="supportDoc3" name="Document3Name">
+            <a 
+            id="docLink3" 
+            href="<%= Records.DOCUMENT_3 ? `/uploads/${Records.DOCUMENT_3}` : '' %>" 
+            target="_blank" 
+            style="<%= Records.DOCUMENT_3 != null && Records.DOCUMENT_3 !== '' ? 'display: inline;' : 'display: none;' %>"
+            >
+            View Uploaded Document
+        </a>
+        </div>
+        <div class="col-md-3">
+            <label for="supportDoc4" class="form-label field-label">Support Document 4</label>
+            <input type="file" class="form-control" id="supportDoc4" name="Document4Name">
+            <a 
+            id="docLink4" 
+            href="<%= Records.DOCUMENT_4 ? `/uploads/${Records.DOCUMENT_4}` : '' %>" 
+            target="_blank" 
+            style="<%= Records.DOCUMENT_4 != null && Records.DOCUMENT_4 !== '' ? 'display: inline;' : 'display: none;' %>"
+            >
+            View Uploaded Document
+        </a>
+        </div>
+    </div>
+
+    <button type="submit">Update</button>
+</form>
+</div>

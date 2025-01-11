@@ -1,0 +1,163 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-container {
+    width: 100vw;
+    height: 100vh;
+    /* padding: 20px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f4;
+}
+.SuccessDeleteMsg{
+    display: block;
+}
+/* Search section */
+.search-section {
+    width: 98%;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    width: 60%;
+    margin-left: 18vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.find-records {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.search-bar input {
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Table styling */
+.table-container {
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+.idHeader{
+    padding: 10px 20px !important;
+}
+
+
+
+
+.records-table thead th {
+    background-color: #162938;
+    color: white;
+    font-weight: bold;
+    padding: 10px 35px;
+    text-align: center;
+    white-space: nowrap; /* Ensure headings stay in one line */
+    overflow: hidden; /* Truncate if content exceeds column width */
+    text-overflow: ellipsis;
+    }
+
+    
+.action-btn {
+    /* display: flex; */
+    gap: 10px;
+   
+}
+
+.action-btn button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+}
+
+.action-btn .edit {
+    background-color:  #162938;
+    padding: 5px 20px;
+    font-size: medium;
+    margin-bottom: 5px;
+}
+.class_ID{
+    /* background-color: #007BFF; */
+    color: blue !important;             
+    padding: 10px 20px;        
+    border: none;              
+    border-radius: 4px;        
+    cursor: pointer;           
+    font-size: 16px;           
+    text-decoration: underline;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+.action-btn .delete {
+    background-color:  #162938;
+    padding: 6px 20px;
+    font-size: medium;
+    margin-bottom: 5px;
+}
+
+.action-btn button:hover {
+    opacity: 0.9;
+}
+
+
+.records-table tbody td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    /* min-height: 1vh; */
+}
+
+.records-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.records-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .find-records {
+        font-size: 1.2rem;
+    }
+
+    .search-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-bar input {
+        width: 100%;
+    }
+
+    .records-table {
+        font-size: 0.9rem;
+    }
+}

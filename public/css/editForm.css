@@ -1,0 +1,49 @@
+/* eidt form css */
+.main-Container{
+    background-color: #f4f4f4;
+    display: flex;
+}
+.edit-form {
+    width: 70%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.edit-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.edit-form label {
+    display: block;
+    margin-left: 5px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+.edit-form input, .edit-form textarea, .edit-form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.edit-form button {
+    background: #162938;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.edit-form button:hover {
+    background: #3a5060;
+}
+
+#status, #integrityThreat, #productionThreat, #isPipeline, #isStructure, #isWell, #criticality{
+    margin-bottom: 15px;
+}

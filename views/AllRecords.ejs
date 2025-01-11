@@ -1,0 +1,239 @@
+<%- include('./partials/header.ejs') %>
+<link rel="stylesheet" href="/css/AllRecords.css">
+
+    <div class="main-container">
+        <div class="search-section">
+            <div class="search-bar">
+                <label for="searchInput" class="find-records">Search Record:</label> 
+                <input type="text" id="searchInput" onkeyup="SearchFunction()" placeholder="Search..." required />
+            </div>
+            <div class="table-container">
+                <table class="records-table" style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>  
+                            <th class="idHeader">ID</th>
+                            <th class="actionHeader">Action</th>
+                            <th>Status</th>
+                            <th>Integrity Threat</th>
+                            <th>Production Threat</th>
+                            <th>Custodian</th>
+                            <th>Operator</th>
+                            <th>Area</th>
+                            <th>PL No</th>
+                            <th>Platform</th>
+                            <th>Field</th>
+                            <th>Is Pipeline</th>
+                            <th>Is Structure</th>
+                            <th>Is Well</th>
+                            <th>Anomaly Type</th>
+                            <th>Assessment</th>
+                            <th>Location</th>
+                            <th>ComP Des</th>
+                            <th>Date First Reported</th>
+                            <th>Date Last Inspected</th>
+                            <th style="word-wrap: no-word; word-break: break-word; max-width: 100ch; padding: 10px; border: 1px solid #ccc;">Description</th>
+                            <th>Components</th>
+                            <th>Comments</th>
+                            <th>Prepared By</th>
+                            <th>Checked By</th>
+                            <th>Approved By</th>
+                            <th>Entered By</th>
+                            <th>Equipment Supplier</th>
+                            <th>Criticality</th>
+                            <th>Hyperlink</th>
+                            <th>Support Document 1</th>
+                            <th>Support Document 2</th>
+                            <th>Support Document 3</th>
+                            <th>Support Document 4</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% try { %>
+                            <% if (Records && Records.length> 0) { %>
+                                <% Records.forEach((item)=> { %>
+                                    <tr>
+                                        <!-- <td class="id" ><%= item.ID %></td> -->
+                                        <td class="action-btn" >
+                                            <form action="/access/<%= item.ID %>" method="get" >
+                                                <button type="submit" class="class_ID" ><%= item.ID %></button>
+                                            </form>
+                                        </td>
+                                        
+                                        <td class="action-btn">
+                                            <form action="/edit/<%= item.ID %>" method="get" >
+                                                <button type="submit" class="edit" >✏️</button>
+                                            </form>
+
+                                            <form action="/delete/<%= item.ID %>" method="post" >
+                                                <button type="submit" class="delete" >❌</button>
+                                            </form>
+                                        </td>
+                                        <!-- status  -->
+                                        <% if (item.ANOMALY_STATUS === 'Open' ) { %>
+                                            <td  style="background-color: rgba(43, 196, 43, 0.87); color: black;"><%= item.ANOMALY_STATUS %></td>
+                                        <% } else if(item.ANOMALY_STATUS === 'Closed' ){ %>
+                                            <td style="background-color: rgba(240, 62, 62, 0.9); color: black;"><%= item.ANOMALY_STATUS %></td>
+                                        <% } else { %>
+                                                <td><%= item.ANOMALY_STATUS %></td> <!-- Default case -->
+                                        <% } %>
+
+                                        <!-- INTEGRITY THREAT -->
+                                        <% if (item.INTEGRITY_THREAT === 'Low' ) { %>
+                                            <td  style="background-color:rgba(240, 62, 62, 0.9); color: black;"><%= item.INTEGRITY_THREAT %></td>
+                                        <% } else if(item.INTEGRITY_THREAT === 'Medium' ){ %>
+                                            <td style="background-color: #b7b725 ; color: black;"><%= item.INTEGRITY_THREAT %></td>
+                                        <% } else if(item.INTEGRITY_THREAT === 'High' ){ %>
+                                            <td style="background-color: rgba(43, 196, 43, 0.87); color: black;"><%= item.INTEGRITY_THREAT %></td>
+                                        <% } else { %>
+                                            <td><%= item.INTEGRITY_THREAT %></td> <!-- Default case -->
+                                        <% } %>
+                                       
+                                        <!-- PRODUCTION THREAT -->
+                                        <% if (item.PRODUCTION_THREAT === 'Low' ) { %>
+                                            <td  style="background-color:rgba(240, 62, 62, 0.9); color: black;"><%= item.PRODUCTION_THREAT %></td>
+                                        <% } else if(item.PRODUCTION_THREAT === 'Medium' ){ %>
+                                            <td style="background-color: #b7b725 ; color: black;"><%= item.PRODUCTION_THREAT %></td>
+                                        <% } else if(item.PRODUCTION_THREAT === 'High' ){ %>
+                                            <td style="background-color: rgba(43, 196, 43, 0.87); color: black;"><%= item.PRODUCTION_THREAT %></td>
+                                        <% } else { %>
+                                            <td><%= item.PRODUCTION_THREAT %></td> <!-- Default case -->
+                                        <% } %>
+                                        <td>
+                                            <%= item.CUSTODIAN %>
+                                        </td>
+                                        <td>
+                                            <%= item.OPERATOR %>
+                                        </td>
+                                        <td>
+                                            <%= item.AREA %>
+                                        </td>
+                                        <td>
+                                            <%= item.PL_NO %>
+                                        </td>
+                                        <td>
+                                            <%= item.PLATFORM %>
+                                        </td>
+                                        <td>
+                                            <%= item.FIELD %>
+                                        </td>
+                                        <td>
+                                            <%= item.IS_PIPELINE %>
+                                        </td>
+                                        <td>
+                                            <%= item.IS_STRUCTURE %>
+                                        </td>
+                                        <td>
+                                            <%= item.IS_WELL %>
+                                        </td>
+                                        <td>
+                                            <%= item.ANOMALY_TYPE %>
+                                        </td>
+                                        <td>
+                                            <%= item.ASSESSMENT %>
+                                        </td>
+                                        <td>
+                                            <%= item.LOCATION %>
+                                        </td>
+                                        <td>
+                                            <%= item.COMP_DES %>
+                                        </td>
+                                        <td>
+                                            <%= new Date(item.REPORTED_DATE).toLocaleDateString("en-GB", {
+                                                day: "2-digit",
+                                                month: "2-digit",
+                                                year: "numeric",
+                                            }) %>
+                                        </td>
+                                        <td>
+                                            <%= new Date(item.INSPECTED_DATE).toLocaleDateString("en-GB", {
+                                                day: "2-digit",
+                                                month: "2-digit",
+                                                year: "numeric",
+                                            }) %>
+                                        </td>
+                                        <td id="description"> 
+                                            <%= item.DESCRIPTION %>
+                                        </td>
+                                        <td style="word-wrap: break-word; word-break: break-word; max-width: 100ch; padding: 10px; border: 1px solid #ccc;">
+                                            <%= item.COMPONENTS %>
+                                        </td>
+                                        <td>
+                                            <%= item.COMMENTS %>
+                                        </td>
+                                        <td>
+                                            <%= item.PREPARED_BY %>
+                                        </td>
+                                        <td>
+                                            <%= item.CHECKED_BY %>
+                                        </td>
+                                        <td>
+                                            <%= item.APPROVE_BY %>
+                                        </td>
+                                        <td>
+                                            <%= item.ENTERED_BY %>
+                                        </td>
+                                        <td>
+                                            <%= item.EQUIPMENT_SUPPLIER %>
+                                        </td>
+
+                                          <!-- CRITICALITY -->
+                                        <% if (item.CRITICALITY === 'Low' ) { %>
+                                            <td  style="background-color:rgba(240, 62, 62, 0.9); color: black;"><%= item.CRITICALITY %></td>
+                                        <% } else if(item.CRITICALITY === 'Medium' ){ %>
+                                            <td style="background-color: #b7b725 ; color: black;"><%= item.CRITICALITY %></td>
+                                        <% } else if(item.CRITICALITY === 'High' ){ %>
+                                            <td style="background-color: rgba(43, 196, 43, 0.87); color: black;"><%= item.CRITICALITY %></td>
+                                        <% } else { %>
+                                            <td><%= item.CRITICALITY %></td> <!-- Default case -->
+                                        <% } %>
+                                        <td>
+                                            <a href="<%= item.HYPERLINK %>"><%= item.HYPERLINK %></a>
+                                        </td>
+                                                <td>
+                                                    <%- item.DOCUMENT_1 
+                                                        ? `<a href="/uploads/${item.DOCUMENT_1}" target="_blank">View Document 1</a>` 
+                                                        : 'No Document' 
+                                                    %>
+                                                </td>
+                                                <td>
+                                                    <%- item.DOCUMENT_2 
+                                                        ? `<a href="/uploads/${item.DOCUMENT_2}" target="_blank">View Document 2</a>` 
+                                                        : 'No Document' 
+                                                    %>
+                                                </td>
+                                                <td>
+                                                    <%- item.DOCUMENT_3 
+                                                        ? `<a href="/uploads/${item.DOCUMENT_3}" target="_blank">View Document 3</a>` 
+                                                        : 'No Document' 
+                                                    %>
+                                                </td>
+                                                <td>
+                                                    <%- item.DOCUMENT_4 
+                                                        ? `<a href="/uploads/${item.DOCUMENT_4}" target="_blank">View Document 4</a>` 
+                                                        : 'No Document' 
+                                                    %>
+                                                </td>
+                                        
+                                        <!-- <td><a id="docLink1" href="" target="_blank" style="display: none;">View Uploaded Document</a></td>
+                                        <td><a id="docLink2" href="" target="_blank" style="display: none;">View Uploaded Document</a></td>
+                                        <td><a id="docLink3" href="" target="_blank" style="display: none;">View Uploaded Document</a></td>
+                                        <td><a id="docLink4" href="" target="_blank" style="display: none;">View Uploaded Document</a></td> -->
+                                    </tr>
+                                <% }) %>
+                            <% } else { %>
+                                <tr>
+                                    <td colspan="32" style="text-align: left;">No Records available.</td>
+                                </tr>
+                            <% } %>
+                        <% } catch (error) { %>
+                            <tr>
+                                <td colspan="32" style="text-align: left;">Error loading data: <%= error.message %></td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/Allrecords.js"></script>

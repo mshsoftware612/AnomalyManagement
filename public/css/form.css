@@ -1,0 +1,124 @@
+body {
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+/* nav bar */
+
+/* nav bar css */
+.nav-bar{
+    width: 100%;
+    height: 11vh;
+    background: #162938;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 55;
+}
+.nav-left{
+    display: flex;
+    list-style: none;
+    color: #fff;
+    margin-left: 3rem;
+}
+.nav-left button{
+    margin: .625rem .5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: .5rem 1.5rem .5rem 1.5rem;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #fff;
+}
+
+.nav-right{
+    display: flex;
+    list-style: none;
+    margin-right: 4rem;
+    color: #fff;
+}
+.nav-right li{
+    margin: .625rem .5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: .3rem 1.4rem 0 1.4rem;
+}
+.nav-right button{
+    margin: .625rem .5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: .6rem 1.6rem .6rem 1.6rem;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #fff;
+    
+}
+.common-class:hover{
+    background-color: #ffffff;
+    font-weight: 600;
+    border-radius: 3rem;
+    color: #000000;
+    transition: .7s;
+    scale: .9999;
+   
+}
+
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.error{
+    border: red;
+}
+.form-section {
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: white;
+    margin-bottom: 20px;
+}
+.btn {
+    font-size: 0.9rem;
+}
+.highlight {
+    background-color: yellow;
+}
+.field-label {
+    font-weight: bold;
+}
+.custom-input {
+    background-color: #f8f9fa;
+}
+textarea#comments {
+    background-color: #fdebd0;
+}
+
+.statusOpen {
+    background-color: rgba(43, 196, 43, 0.87) !important;
+    color: white !important;
+}
+
+.statusClosed {
+    background-color: rgba(240, 62, 62, 0.9) !important;
+    color: white !important;
+}
+
+.integrityLow {
+    background-color: #FFBF00 !important;
+    color: white !important;
+}
+
+.integrityMedium {
+    background-color: rgba(43, 196, 43, 0.87) !important;
+    color: white !important;
+}
+.integrityHigh {
+    background-color: rgba(240, 62, 62, 0.9)  !important;
+    color: white !important;
+}
