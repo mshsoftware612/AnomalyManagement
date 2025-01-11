@@ -6,7 +6,7 @@ import Routes from './routes/routes.js';
 import bodyParser from 'body-parser';
 
 const app = express();
-const port = process.env.PORT || 8001;
+const port = process.env.PORT || 8002;
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
